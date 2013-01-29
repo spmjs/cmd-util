@@ -22,7 +22,7 @@ define('id', ['a'], function(require) {
 
 When `ast.parse(code)` this code block, it will return:
 
-```
+```js
 {id: 'id', dependencies: ['a'], factory: factoryNode}
 ```
 
@@ -36,7 +36,7 @@ define(function(require) {
 
 The result should be:
 
-```
+```js
 {id: null, dependencies: ['jquery'], factory: factoryNode}
 ```
 
@@ -45,7 +45,7 @@ The result should be:
 
 Information or meta data in every `define`:
 
-```
+```js
 define('id', ['a'], {})
 define(function(require) {
    var $ = require('jquery')
@@ -54,7 +54,7 @@ define(function(require) {
 
 The result of `ast.parseAll(code)`:
 
-```
+```js
 [
     {id: 'id', dependencies: ['a'], factory: factoryNode},
     {id: null, dependencies: ['jquery'], factory: factoryNode}
@@ -65,21 +65,21 @@ The result of `ast.parseAll(code)`:
 
 Modify meta data in the `define`:
 
-```
+```js
 // define({})
 ast.modify(code, {id: 'id', dependencies: ['a']})
 
 // => define('id', ['a'], {})
 ```
 
-```
+```js
 // define('id', ['a'], {})
 ast.modify(code, {id: function(v) { return v + '-debug'}})
 
 // => define('id-debug', ['a'], {})
 ```
 
-```
+```js
 // define('id', [], function(require) { var $ = require('jquery') })
 ast.modify(code, {require: function(v) {
    if (v === 'jquery') return '$';
@@ -88,7 +88,7 @@ ast.modify(code, {require: function(v) {
 // => define('id', [], function(require) { var $ = require('$') })
 ```
 
-```
+```js
 // define('id', [], function(require) { var $ = require('jquery') })
 ast.modify(code, {require: {'jquery': '$'}});
 
@@ -100,7 +100,7 @@ ast.modify(code, {require: {'jquery': '$'}});
 
 Modify every meta data with the function:
 
-```
+```js
 define('id', ['a'], function(require) {
     var $ = require('jquery')
 });
@@ -108,7 +108,7 @@ define('id', ['a'], function(require) {
 
 Modify the code with:
 
-```
+```js
 ast.modify(code, function(v) {
     return v + '-debug'
 })
@@ -116,7 +116,7 @@ ast.modify(code, function(v) {
 
 The result should be:
 
-```
+```js
 define('id-debug', ['a-debug'], function(require) {
     var $ = require('jquery-debug');
 });
