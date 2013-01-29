@@ -1,4 +1,4 @@
-# cmd-util
+# cmd-util [![Build Status](https://travis-ci.org/spmjs/cmd-util.png)](https://travis-ci.org/spmjs/cmd-util)
 
 Utilities for common module definition.
 
