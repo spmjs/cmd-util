@@ -18,9 +18,9 @@
   "bugs": {
     "url": "https://github.com/spmjs/cmd-util/issues"
   },
-  "keywords": {
+  "keywords": [
     "cmd", "spm", "module", "ast"
-  },
+  ],
   "scripts": {
     "test": "make test"
   }
