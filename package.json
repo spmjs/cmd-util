@@ -1,0 +1,16 @@
+{
+  "name": "cmd-util",
+  "version": "1.0.0a1",
+  "description": "Utilities for common module definition.",
+  "dependencies": {
+    "uglify-js": "~2.2.2"
+  },
+  "devDependencies": {
+    "jshint": "*",
+    "mocha": "*",
+    "should": "*"
+  },
+  "scripts": {
+    "test": "make test"
+  }
+}
