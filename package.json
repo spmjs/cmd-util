@@ -1,7 +1,8 @@
 {
   "name": "cmd-util",
-  "version": "1.0.0a1",
+  "version": "0.1.0a1",
   "description": "Utilities for common module definition.",
+  "author": "Hsiaoming Yang <lepture@me.com>",
   "dependencies": {
     "uglify-js": "~2.2.2"
   },
@@ -9,6 +10,16 @@
     "jshint": "*",
     "mocha": "*",
     "should": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/spmjs/cmd-util.git"
+  },
+  "bugs": {
+    "url": "https://github.com/spmjs/cmd-util/issues"
+  },
+  "keywords": {
+    "cmd", "spm", "module", "ast"
   },
   "scripts": {
     "test": "make test"
