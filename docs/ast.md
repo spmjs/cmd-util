@@ -41,7 +41,7 @@ The result should be:
 ```
 
 
-## ast.parseAll(code)
+## ast.parse(code)
 
 Information or meta data in every `define`:
 
@@ -52,7 +52,7 @@ define(function(require) {
 });
 ```
 
-The result of `ast.parseAll(code)`:
+The result of `ast.parse(code)`:
 
 ```js
 [
