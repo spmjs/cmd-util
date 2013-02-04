@@ -18,6 +18,12 @@ This package is designed for developers, if you are a user, don't read this.
 $ npm install cmd-util
 ```
 
+Get the unstable version with:
+
+```
+$ npm install cmd-util@ninja
+```
+
 ## Contribute
 
 Yes, please do contribute. But before this, you should read our [Contributing Guide](https://github.com/spmjs/cmd-util/blob/master/CONTRIBUTING.md).
