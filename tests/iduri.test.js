@@ -49,22 +49,22 @@ describe('iduri.resolve', function() {
     meta.type.should.equal('spm');
   });
 
-  it('has root: arale', function() {
+  it('has family: arale', function() {
     // git type
     meta = iduri.resolve('arale');
-    meta.root.should.equal('arale');
+    meta.family.should.equal('arale');
 
     meta = iduri.resolve('arale/base');
-    meta.root.should.equal('arale');
+    meta.family.should.equal('arale');
 
     meta = iduri.resolve('arale.base');
-    meta.root.should.equal('arale');
+    meta.family.should.equal('arale');
 
     meta = iduri.resolve('git@github.com:aralejs/base');
-    meta.root.should.equal('aralejs');
+    meta.family.should.equal('aralejs');
 
     meta = iduri.resolve('git://github.com/aralejs/base.git');
-    meta.root.should.equal('aralejs');
+    meta.family.should.equal('aralejs');
   });
 });
 
@@ -130,7 +130,7 @@ describe('iduri.appendext', function() {
 describe('iduri.idFromPackage', function() {
   it('generate id without format config', function() {
     iduri.idFromPackage({
-      root: 'arale',
+      family: 'arale',
       name: 'class',
       version: '1.0.0',
       filename: 'class.js'
@@ -139,19 +139,19 @@ describe('iduri.idFromPackage', function() {
 
   it('generate id with format config', function() {
     iduri.idFromPackage({
-      root: 'alice',
+      family: 'alice',
       filename: 'button.css'
     }, '<%= filename %>').should.equal('button.css');
 
     iduri.idFromPackage({
-      root: 'alice',
+      family: 'alice',
       filename: 'button.css'
-    },'#<%= root %>/<%= filename %>').should.equal('#alice/button.css');
+    },'#<%= family %>/<%= filename %>').should.equal('#alice/button.css');
   });
 
   it('should generate id from relative path', function() {
     iduri.idFromPackage({
-      root: 'arale',
+      family: 'arale',
       name: 'base',
       version: '1.0.0',
       filename: 'class.js'
