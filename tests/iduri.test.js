@@ -141,12 +141,12 @@ describe('iduri.idFromPackage', function() {
     iduri.idFromPackage({
       family: 'alice',
       filename: 'button.css'
-    }, '<%= filename %>').should.equal('button.css');
+    }, '{{ filename }}').should.equal('button.css');
 
     iduri.idFromPackage({
       family: 'alice',
       filename: 'button.css'
-    },'#<%= family %>/<%= filename %>').should.equal('#alice/button.css');
+    },'#{{ family }}/{{ filename }}').should.equal('#alice/button.css');
   });
 
   it('should generate id from relative path', function() {
