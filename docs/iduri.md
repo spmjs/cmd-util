@@ -106,5 +106,5 @@ If the name is an alias.
 Generate id from package with the format. Default format is:
 
 ```
-'<%= root %>/<%= name %>/<%= version %>/<%= filename %>'
+'{{ family }}/{{ name }}/{{ version }}/{{ filename }}'
 ```
