@@ -17,7 +17,7 @@ Resolve uri to an object. Demo talks:
 // iduri.resovle('arale.base')
 {
     type: 'spm'
-    root: 'arale',
+    family: 'arale',
     name: 'base',
     version: null,
     url: null
@@ -26,23 +26,23 @@ Resolve uri to an object. Demo talks:
 
 Supported formats:
 
-- root/name@version
-- root/name#version
-- root.name@version
-- root/name#version
+- family/name@version
+- family/name#version
+- family.name@version
+- family/name#version
 
 ```js
 // iduri.resovle('seajs')
 {
     type: 'spm',
-    root: 'seajs',
+    family: 'seajs',
     name: 'seajs',
     version: null,
     url: null
 }
 ```
 
-If root is the same as name, the supported formats:
+If family is the same as name, the supported formats:
 
 - name@version
 - name#version
