@@ -101,6 +101,18 @@ describe('ast.parse', function() {
     ].join('\n');
     ast.parseFirst(code).dependencies.should.have.length(0);
   });
+
+  it('can parse AMD', function() {
+    var code = [
+      "(function() {",
+      "  var jQuery = {};",
+      "  define('jquery', [], function() {",
+      "    return jQuery;",
+      "  });",
+      "})();"
+    ].join('\n');
+    ast.parseFirst(code).id.should.equal('jquery');
+  });
 });
 
 describe('ast.modify', function() {
@@ -133,24 +145,26 @@ describe('ast.modify', function() {
 
   it('can replace id', function() {
     var code = "define({})";
-    ast.modify(code, {id: 'id'}).should.equal('define("id", [], {})\n');
+    ast.modify(code, {
+      id: 'id',
+    }).should.equal('define("id", [], {});');
 
     ast.modify(code, {id: function(v) {
       return 'id2';
-    }}).should.equal('define("id2", [], {})\n');
+    }}).should.equal('define("id2", [], {});');
   });
 
 
   it('can replace dependencies', function() {
     var code = "define({})";
-    ast.modify(code, {dependencies: 'a'}).should.equal('define(["a"], {})\n');
-    ast.modify(code, {dependencies: ['a']}).should.equal('define(["a"], {})\n');
+    ast.modify(code, {dependencies: 'a'}).should.equal('define([ "a" ], {});');
+    ast.modify(code, {dependencies: ['a']}).should.equal('define([ "a" ], {});');
   });
 
   it('replace id and dependencies via function', function() {
     var code = "define({})";
     code = ast.modify(code, {id: 'id', dependencies: ['a']});
-    code.should.equal('define("id", ["a"], {})\n');
+    code.should.equal('define("id", [ "a" ], {});');
   });
 
   it('should be debug id', function() {
@@ -184,5 +198,19 @@ describe('ast.modify', function() {
     });
     data.should.include('id-debug');
     data.should.include('jquery-debug');
+  });
+
+  it('can modify AMD', function() {
+    var code = [
+      "(function() {",
+      "  var jQuery = {};",
+      "  define('jquery', [], function() {",
+      "    return jQuery;",
+      "  });",
+      "})();"
+    ].join('\n');
+    code = ast.modify(code, function(v) { return 'jquery-debug'; });
+    code.should.include('(function()');
+    code.should.include('jquery-debug');
   });
 });
