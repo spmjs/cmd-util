@@ -157,6 +157,14 @@ describe('iduri.idFromPackage', function() {
       filename: 'class.js'
     }, './event.js').should.equal('./event');
   });
+
+  it('should generate id without a filename', function() {
+    iduri.idFromPackage({
+      family: 'arale',
+      name: 'base',
+      version: '1.0.0'
+    }, '').should.equal('arale/base/1.0.0/');
+  });
 });
 
 describe('iduri.isAlias', function() {
