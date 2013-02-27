@@ -1,10 +1,10 @@
 {
   "name": "cmd-util",
-  "version": "0.1.1a3",
+  "version": "0.2.0a1",
   "description": "Utilities for common module definition.",
   "author": "Hsiaoming Yang <lepture@me.com>",
   "dependencies": {
-    "uglify-js": "~2.2.2"
+    "uglify-js": "~2.2.5"
   },
   "devDependencies": {
     "jshint": "*",
