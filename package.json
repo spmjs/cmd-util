@@ -1,6 +1,6 @@
 {
   "name": "cmd-util",
-  "version": "0.2.0a1",
+  "version": "0.2.0a2",
   "description": "Utilities for common module definition.",
   "author": "Hsiaoming Yang <lepture@me.com>",
   "dependencies": {
