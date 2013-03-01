@@ -63,7 +63,14 @@ The result of `ast.parse(code)`:
 
 ## ast.modify(code, {id: fn, dependencies: fn, require: fn})
 
-Modify meta data in the `define`:
+Modify meta data in the `define`, it returns ast, get the string with:
+
+```js
+var m = ast.modify(code, ...)
+console.log(m.print_to_string())
+```
+
+Some examples of `ast.modify`:
 
 ```js
 // define({})

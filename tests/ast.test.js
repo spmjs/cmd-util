@@ -124,6 +124,7 @@ describe('ast.modify', function() {
       "})"
     ].join('\n');
     code = ast.modify(code, {require: {jquery: '$', undersocre: '_'}});
+    code = code.print_to_string();
     code.should.include('require("$")');
     code.should.include('require("_")');
   });
@@ -139,6 +140,7 @@ describe('ast.modify', function() {
       if (v === 'jquery') return '$';
       if (v === 'undersocre') return '_';
     }});
+    code = code.print_to_string();
     code.should.include('require("$")');
     code.should.include('require("_")');
   });
@@ -147,23 +149,32 @@ describe('ast.modify', function() {
     var code = "define({})";
     ast.modify(code, {
       id: 'id',
-    }).should.equal('define("id", [], {});');
+    }).
+      print_to_string({beautify: true}).
+      should.equal('define("id", [], {});');
 
     ast.modify(code, {id: function(v) {
       return 'id2';
-    }}).should.equal('define("id2", [], {});');
+    }}).
+      print_to_string({beautify: true}).
+      should.equal('define("id2", [], {});');
   });
 
 
   it('can replace dependencies', function() {
     var code = "define({})";
-    ast.modify(code, {dependencies: 'a'}).should.equal('define([ "a" ], {});');
-    ast.modify(code, {dependencies: ['a']}).should.equal('define([ "a" ], {});');
+    ast.modify(code, {dependencies: 'a'}).
+      print_to_string({beautify: true}).
+      should.equal('define([ "a" ], {});');
+    ast.modify(code, {dependencies: ['a']}).
+      print_to_string({beautify: true}).
+      should.equal('define([ "a" ], {});');
   });
 
   it('replace id and dependencies via function', function() {
     var code = "define({})";
     code = ast.modify(code, {id: 'id', dependencies: ['a']});
+    code = code.print_to_string({beautify: true});
     code.should.equal('define("id", [ "a" ], {});');
   });
 
@@ -171,7 +182,9 @@ describe('ast.modify', function() {
     var code = "define('id', [], {})";
     ast.modify(code, function(v) {
       return v + '-debug';
-    }).should.include('id-debug');
+    }).
+      print_to_string().
+      should.include('id-debug');
   });
 
   it('should be debug require', function() {
@@ -179,7 +192,9 @@ describe('ast.modify', function() {
 
     ast.modify(code, function(v) {
       return v + '-debug';
-    }).should.include('jquery-debug');
+    }).
+      print_to_string().
+      should.include('jquery-debug');
   });
 
   it('should be debug dependencies', function() {
@@ -187,7 +202,9 @@ describe('ast.modify', function() {
 
     ast.modify(code, function(v) {
       return v + '-debug';
-    }).should.include('jquery-debug');
+    }).
+      print_to_string().
+      should.include('jquery-debug');
   });
 
   it('should have id-debug, jquery-debug', function() {
@@ -196,6 +213,7 @@ describe('ast.modify', function() {
     var data = ast.modify(code, function(v) {
       return v + '-debug';
     });
+    data = data.print_to_string();
     data.should.include('id-debug');
     data.should.include('jquery-debug');
   });
@@ -210,6 +228,7 @@ describe('ast.modify', function() {
       "})();"
     ].join('\n');
     code = ast.modify(code, function(v) { return 'jquery-debug'; });
+    code = code.print_to_string();
     code.should.include('(function()');
     code.should.include('jquery-debug');
   });
