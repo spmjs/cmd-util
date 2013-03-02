@@ -1,6 +1,5 @@
 var should = require('should');
-var require = require('./_require');
-var iduri = require('../lib/iduri');
+var iduri = require('..').iduri;
 
 
 describe('iduri.resolve', function() {
@@ -8,45 +7,27 @@ describe('iduri.resolve', function() {
 
   it('has no version', function() {
     meta = iduri.resolve('lepture/nico');
-    should.not.exist(meta.version);
+    meta.version.should.equal('');
+  });
+
+  it('is invalid', function() {
+    meta = iduri.resolve('aBcD@0.1.5');
+    should.not.exist(meta);
   });
 
   it('has a version', function() {
     meta = iduri.resolve('lepture/nico@0.1.5');
-    should.exist(meta.version);
+    meta.version.should.equal('0.1.5');
+  });
 
+  it('has a version', function() {
     meta = iduri.resolve('lepture/nico#0.1.5');
-    should.exist(meta.version);
+    meta.version.should.equal('0.1.5');
+  });
 
+  it('has a version', function() {
     meta = iduri.resolve('lepture.nico@0.1.5');
-    should.exist(meta.version);
-  });
-
-  it('should resolve as git', function() {
-    meta = iduri.resolve('git@github.com:lepture/nico');
-    meta.type.should.equal('git');
-
-    meta = iduri.resolve('https://github.com/lepture/nico.git');
-    meta.type.should.equal('git');
-
-    meta = iduri.resolve('git+https://github.com/lepture/nico');
-    meta.type.should.equal('git');
-  });
-
-  it('should resolve as http', function() {
-    meta = iduri.resolve('https://github.com/lepture/nico');
-    meta.type.should.equal('http');
-  });
-
-  it('should resolve as spm', function() {
-    meta = iduri.resolve('lepture/nico');
-    meta.type.should.equal('spm');
-
-    meta = iduri.resolve('lepture.nico');
-    meta.type.should.equal('spm');
-
-    meta = iduri.resolve('seajs');
-    meta.type.should.equal('spm');
+    meta.version.should.equal('0.1.5');
   });
 
   it('has family: arale', function() {
@@ -59,12 +40,6 @@ describe('iduri.resolve', function() {
 
     meta = iduri.resolve('arale.base');
     meta.family.should.equal('arale');
-
-    meta = iduri.resolve('git@github.com:aralejs/base');
-    meta.family.should.equal('aralejs');
-
-    meta = iduri.resolve('git://github.com/aralejs/base.git');
-    meta.family.should.equal('aralejs');
   });
 });
 
