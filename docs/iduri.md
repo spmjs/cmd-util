@@ -16,11 +16,9 @@ Resolve uri to an object. Demo talks:
 // iduri.resovle('arale/base')
 // iduri.resovle('arale.base')
 {
-    type: 'spm'
     family: 'arale',
     name: 'base',
-    version: null,
-    url: null
+    version: '',
 }
 ```
 
@@ -34,11 +32,9 @@ Supported formats:
 ```js
 // iduri.resovle('seajs')
 {
-    type: 'spm',
     family: 'seajs',
     name: 'seajs',
-    version: null,
-    url: null
+    version: '',
 }
 ```
 

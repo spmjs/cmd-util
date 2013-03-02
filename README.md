@@ -6,6 +6,8 @@ Utilities for common module definition.
 
 This package is designed for developers, if you are a user, don't read this.
 
+**100% test coverage**
+
 ## Implements
 
 - **ast**: parse cmd javascript code, do whatever you want.
