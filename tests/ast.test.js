@@ -1,6 +1,5 @@
 var should = require('should');
-var require = require('./_require');
-var ast = require('../lib/ast');
+var ast = require('./_require')('../lib/ast');
 
 describe('ast.parse', function() {
   it('has id, but no dependencies', function() {
@@ -120,13 +119,13 @@ describe('ast.modify', function() {
     var code = [
       "define(function(require) {",
       "  var jquery = require('jquery');",
-      "  var undersocre = require('undersocre');",
+      "  var underscore = require('underscore');",
       "})"
     ].join('\n');
-    code = ast.modify(code, {require: {jquery: '$', undersocre: '_'}});
+    code = ast.modify(code, {require: {jquery: '$'}});
     code = code.print_to_string();
     code.should.include('require("$")');
-    code.should.include('require("_")');
+    code.should.include('require("underscore")');
   });
 
   it('can replace require with function', function() {
@@ -153,13 +152,13 @@ describe('ast.modify', function() {
       print_to_string({beautify: true}).
       should.equal('define("id", [], {});');
 
+    code = "define(['id'], {})";
     ast.modify(code, {id: function(v) {
       return 'id2';
     }}).
       print_to_string({beautify: true}).
-      should.equal('define("id2", [], {});');
+      should.equal('define("id2", [ "id" ], {});');
   });
-
 
   it('can replace dependencies', function() {
     var code = "define({})";
@@ -169,6 +168,13 @@ describe('ast.modify', function() {
     ast.modify(code, {dependencies: ['a']}).
       print_to_string({beautify: true}).
       should.equal('define([ "a" ], {});');
+  });
+
+  it('can replace dependencies with object', function() {
+    var code = 'define(["a", "b"], {})';
+    ast.modify(code, {dependencies: {a: 'arale'}}).
+      print_to_string({beautify: true}).
+      should.equal('define([ "arale", "b" ], {});');
   });
 
   it('replace id and dependencies via function', function() {

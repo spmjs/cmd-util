@@ -124,6 +124,16 @@ describe('iduri.idFromPackage', function() {
     },'#{{ family }}/{{ filename }}').should.equal('#alice/button.css');
   });
 
+  it('get format from pkg.spm.format', function() {
+    iduri.idFromPackage({
+      family: 'alice',
+      filename: 'button.css',
+      spm: {
+        format: '{{family}}/{{filename}}'
+      }
+    }).should.equal('alice/button.css');
+  });
+
   it('should generate id from relative path', function() {
     iduri.idFromPackage({
       family: 'arale',
