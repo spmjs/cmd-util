@@ -1,5 +1,5 @@
 var should = require('should');
-var iduri = require('..').iduri;
+var iduri = require('./_require')('../lib/iduri');
 
 
 describe('iduri.resolve', function() {
