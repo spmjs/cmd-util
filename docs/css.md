@@ -22,7 +22,7 @@ When a css data is parsed, it will return a data structure like:
     // parse from source
     dependencies: [],
 
-    source: [
+    code: [
         {
             type: 'import',
             id: 'base'
@@ -42,7 +42,17 @@ When a css data is parsed, it will return a data structure like:
         {
             type: 'block',
             id: 'alice/button/1.0.1/button.css',
-            code: '...'
+            code: [
+                {
+                    type: 'block',
+                    code: '....'
+                },
+                {
+                    type: 'block',
+                    id: 'alice/base/1.0.0/base.css',
+                    code: '...'
+                }
+            ]
         }
         ...
     ]
