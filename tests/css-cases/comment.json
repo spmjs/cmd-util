@@ -1,11 +1,12 @@
-{
-  "id": "a",
-  "type": "block",
-  "code": [
-    {
-      "type": "string",
-      "code": "a {color: red}\n\n/* hello world */"
-    }
-  ]
-}
-
+[
+  {
+    "id": "a",
+    "type": "block",
+    "code": [
+      {
+        "type": "string",
+        "code": "a {color: red}\n\n/* hello world */"
+      }
+    ]
+  }
+]
