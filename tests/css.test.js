@@ -18,4 +18,24 @@ describe('css.parse', function() {
       JSON.stringify(ret, null, 2).should.equal(json.trim());
     });
   });
+
+  it('should throw block not finished', function() {
+    (function() {
+      var code = [
+        '/*! block a */'
+      ].join('\n');
+      css.parse(code)
+    }).should.throwError('block not finished.');
+  });
+
+  it('should throw block indent error', function() {
+    (function() {
+      var code = [
+        '/*! block a */',
+        '/*! endblock */',
+        '/*! endblock a*/'
+      ].join('\n');
+      css.parse(code)
+    }).should.throwError('block indent error.');
+  });
 });
