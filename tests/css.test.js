@@ -24,7 +24,7 @@ describe('css.parse', function() {
       var code = [
         '/*! block a */'
       ].join('\n');
-      css.parse(code)
+      css.parse(code);
     }).should.throwError('block not finished.');
   });
 
@@ -35,7 +35,29 @@ describe('css.parse', function() {
         '/*! endblock */',
         '/*! endblock a*/'
       ].join('\n');
-      css.parse(code)
+      css.parse(code);
     }).should.throwError('block indent error.');
+  });
+});
+
+describe('css.walk', function() {
+  it('can stop the walk', function() {
+    var data = read(path.join(__dirname, 'css-cases', 'block.css'));
+    var ret = css.parse(data);
+    var count = 0;
+    css.walk(ret, function(node) {
+      count++;
+      return false;
+    });
+    count.should.equal(1);
+  });
+
+  it('can walk through', function() {
+    var data = read(path.join(__dirname, 'css-cases', 'block.css'));
+    var count = 0;
+    css.walk(data, function(node) {
+      count++;
+    });
+    count.should.equal(9);
   });
 });
