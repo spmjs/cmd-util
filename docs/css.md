@@ -17,26 +17,23 @@ When a css data is parsed, it will return a data structure like:
 
 ```js
 {
+    type: 'block',
     id: 'alice/button/1.0.0/button.css',
-
-    // parse from source
-    dependencies: [],
-
     code: [
         {
             type: 'import',
             id: 'base'
         },
         {
-            type: 'block',
-            code: '...',
+            type: 'string',
+            code: '...'
         }
         {
             type: 'import',
             id: 'alice/class/1.0.0/class.css'
         },
         {
-            type: 'block',
+            type: 'string',
             code: '...',
         },
         {
@@ -44,13 +41,8 @@ When a css data is parsed, it will return a data structure like:
             id: 'alice/button/1.0.1/button.css',
             code: [
                 {
-                    type: 'block',
+                    type: 'string',
                     code: '....'
-                },
-                {
-                    type: 'block',
-                    id: 'alice/base/1.0.0/base.css',
-                    code: '...'
                 }
             ]
         }
@@ -59,7 +51,4 @@ When a css data is parsed, it will return a data structure like:
 }
 ```
 
-
-## css.modify(code, id, fn)
-
-You can only modify `import` and `block`.
+## css.walk(parsed, fn)
