@@ -1,6 +1,6 @@
 # css
 
-- pubdate: 2013-03-13
+- pubdate: 2013-03-14
 
 The css parser
 
@@ -16,7 +16,7 @@ var css = require('cmd-util').css
 When a css data is parsed, it will return a data structure like:
 
 ```js
-{
+[{
     type: 'block',
     id: 'alice/button/1.0.0/button.css',
     code: [
@@ -48,7 +48,20 @@ When a css data is parsed, it will return a data structure like:
         }
         ...
     ]
-}
+}]
 ```
 
-## css.walk(parsed, fn)
+## css.walk(code, fn)
+
+Walk through the code:
+
+```js
+var ids = [];
+css.walk(code, function(node) {
+    if (node.id) {
+        ids.push(node.id);
+    }
+});
+```
+
+You can stop the walk by `return false`.
