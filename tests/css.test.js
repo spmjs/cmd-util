@@ -64,13 +64,13 @@ describe('css.walk', function() {
   });
 });
 
-describe('css.stringfiy', function() {
+describe('css.stringify', function() {
   fs.readdirSync(__dirname + '/css-cases').forEach(function(file) {
     if (!/\.txt/.test(file)) return;
     file = path.basename(file, '.txt');
     it('should stringify ' + file, function() {
       var code = read(path.join(__dirname, 'css-cases', file + '.css'));
-      var ret = css.stringify(code);
+      var ret = css.stringify(css.parse(code));
       var txt = read(path.join(__dirname, 'css-cases', file + '.txt'));
       ret.should.equal(txt.trim());
     });
