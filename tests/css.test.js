@@ -9,7 +9,7 @@ var css = require('./_require')('../lib/css');
 
 describe('css.parse', function() {
   fs.readdirSync(__dirname + '/css-cases').forEach(function(file) {
-    if (/\.json$/.test(file)) return;
+    if (!/\.css/.test(file)) return;
     file = path.basename(file, '.css');
     it('should parse ' + file, function() {
       var code = read(path.join(__dirname, 'css-cases', file + '.css'));
@@ -61,5 +61,40 @@ describe('css.walk', function() {
       count++;
     });
     count.should.equal(9);
+  });
+});
+
+describe('css.stringfiy', function() {
+  fs.readdirSync(__dirname + '/css-cases').forEach(function(file) {
+    if (!/\.txt/.test(file)) return;
+    file = path.basename(file, '.txt');
+    it('should stringify ' + file, function() {
+      var code = read(path.join(__dirname, 'css-cases', file + '.css'));
+      var ret = css.stringify(code);
+      var txt = read(path.join(__dirname, 'css-cases', file + '.txt'));
+      ret.should.equal(txt.trim());
+    });
+  });
+
+  it('can stringify with filter', function() {
+    var code = read(path.join(__dirname, 'css-cases', 'block.css'));
+    code = css.parse(code);
+    var ret = css.stringify(code, function(node) {
+      if (node.id === 'b') {
+        return false;
+      }
+      if (node.id === 'a') {
+        node.id = 'a/b/c';
+        return node;
+      }
+    });
+    var expected = [
+      'body {color: red}',
+      '',
+      '/*! block a/b/c */',
+      'a {color: black}',
+      '/*! endblock a/b/c */'
+    ].join('\n');
+    ret.should.equal(expected);
   });
 });

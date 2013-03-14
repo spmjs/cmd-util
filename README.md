@@ -33,6 +33,11 @@ Yes, please do contribute. But before this, you should read our [Contributing Gu
 
 ## Changelog
 
+**Mar 14, 2013** `0.3.1`
+
+1. make `css.walk` the right way
+2. add `css.strigify`
+
 **Mar 14, 2013** `0.3.0`
 
 1. add css parser
