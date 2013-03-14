@@ -51,7 +51,7 @@ When a css data is parsed, it will return a data structure like:
 }]
 ```
 
-## css.walk(code, fn)
+## css.walk(code, filter)
 
 Walk through the code:
 
@@ -65,3 +65,7 @@ css.walk(code, function(node) {
 ```
 
 You can stop the walk by `return false`.
+
+## css.stringify(code, filter)
+
+Stringify the parsed code.
