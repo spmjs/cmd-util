@@ -45,11 +45,13 @@ describe('css.walk', function() {
     var data = read(path.join(__dirname, 'css-cases', 'block.css'));
     var ret = css.parse(data);
     var count = 0;
-    css.walk(ret, function(node) {
+    css.walk(ret, function(node, p) {
+      if (node.id === 'b') {
+        return false;
+      }
       count++;
-      return false;
     });
-    count.should.equal(1);
+    count.should.equal(4);
   });
 
   it('can walk through', function() {
