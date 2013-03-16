@@ -97,4 +97,8 @@ describe('css.stringify', function() {
     ].join('\n');
     ret.should.equal(expected);
   });
+
+  it('stringify nothing', function() {
+    css.stringify('a').should.equal('a');
+  });
 });
