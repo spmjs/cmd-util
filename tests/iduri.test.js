@@ -183,3 +183,12 @@ describe('iduri.parseAlias', function() {
     iduri.parseAlias({}, 'hello').should.equal('hello');
   });
 });
+
+describe('iduri.validateFormat', function() {
+  it('should be a valid format', function() {
+    iduri.validateFormat('{{family}}/{{ name}}/{{version }}/{{  filename  }}').should.equal(true);
+  });
+  it('should be a invalid format', function() {
+    iduri.validateFormat('{{family}}/{{version }}/{{{ name}}/{  filename  }}').should.equal(false);
+  });
+});

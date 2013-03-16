@@ -1,6 +1,6 @@
 # iduri
 
-- pubdate: 2013-01-29
+- pubdate: 2013-03-16
 
 -----
 
@@ -104,3 +104,7 @@ Generate id from package with the format. Default format is:
 ```
 '{{ family }}/{{ name }}/{{ version }}/{{ filename }}'
 ```
+
+## iduri.validateFormat(format)
+
+Detect if the format is the default format.
