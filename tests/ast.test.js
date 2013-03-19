@@ -213,6 +213,15 @@ describe('ast.modify', function() {
       should.include('jquery-debug');
   });
 
+  it('can delete dependencies', function() {
+    var code = "define('id', ['jquery', 'b'], {})";
+    code = ast.modify(code, function(v) {
+      if (v === 'jquery') return null;
+      return v;
+    }).print_to_string();
+    code.should.not.include('jquery');
+  });
+
   it('should have id-debug, jquery-debug', function() {
     var code = "define('id', [], function(require){ require('jquery') })";
 
