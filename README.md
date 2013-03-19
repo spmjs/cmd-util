@@ -33,6 +33,14 @@ Yes, please do contribute. But before this, you should read our [Contributing Gu
 
 ## Changelog
 
+**Mar 19, 2013** `0.3.3`
+
+1. Enhancement of ast. Delete a dependency by `return null`
+
+**Mar 16, 2013** `0.3.2`
+
+1. add `iduri.validateFormat`
+
 **Mar 14, 2013** `0.3.1`
 
 1. make `css.walk` the right way

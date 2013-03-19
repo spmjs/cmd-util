@@ -102,6 +102,16 @@ ast.modify(code, {require: {'jquery': '$'}});
 // => define('id', [], function(require) { var $ = require('$') })
 ```
 
+You can delete a dependencies by `return null`.
+
+```js
+// define('id', ['jquery', 'a', 'b'], {})
+ast.modify(code, {dependencies: function(v) {
+    if (v === 'jquery') return null;
+    return v;
+});
+// => define('id', ['a', 'b'], {})
+```
 
 ## ast.modify(code, fn)
 
