@@ -99,6 +99,13 @@ describe('ast.parse', function() {
       "})"
     ].join('\n');
     ast.parseFirst(code).dependencies.should.have.length(0);
+
+    code = [
+      "define(function(require, exports, module) {",
+      "  require.async('jquery');",
+      "})"
+    ].join('\n');
+    ast.parseFirst(code).dependencies.should.have.length(0);
   });
 
   it('can parse AMD', function() {
