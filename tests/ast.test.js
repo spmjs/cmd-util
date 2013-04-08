@@ -108,6 +108,16 @@ describe('ast.parse', function() {
     ast.parseFirst(code).dependencies.should.have.length(0);
   });
 
+  it('can find excutable dependency', function() {
+    var code = [
+      "define(function(require, exports, module) {",
+      "  require('foo')('bar');",
+      "})"
+    ].join('\n');
+    var parsed = ast.parseFirst(code);
+    parsed.dependencies.should.eql(['foo']);
+  });
+
   it('can parse AMD', function() {
     var code = [
       "(function() {",
