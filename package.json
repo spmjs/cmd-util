@@ -1,6 +1,6 @@
 {
   "name": "cmd-util",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "Utilities for common module definition.",
   "author": "Hsiaoming Yang <lepture@me.com>",
   "dependencies": {
@@ -19,7 +19,10 @@
     "url": "https://github.com/spmjs/cmd-util/issues"
   },
   "keywords": [
-    "cmd", "spm", "module", "ast"
+    "cmd",
+    "spm",
+    "module",
+    "ast"
   ],
   "scripts": {
     "test": "make test"

@@ -33,6 +33,10 @@ Yes, please do contribute. But before this, you should read our [Contributing Gu
 
 ## Changelog
 
+**April 8th, 2013** `0.3.5`
+
+1. Fix parse dependency of `require('foo')('bar')`
+
 **Mar 29, 2013** `0.3.4`
 
 1. Only parse `require`, don't parse `require.async`
