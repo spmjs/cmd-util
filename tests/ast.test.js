@@ -129,6 +129,15 @@ describe('ast.parse', function() {
     ].join('\n');
     ast.parseFirst(code).id.should.equal('jquery');
   });
+
+  it('can parse null dependencies', function() {
+    var code = [
+      "define('id', null, function(require) {",
+      "  require('jquery');",
+      "})"
+    ].join('\n');
+    ast.parseFirst(code).dependencies.should.eql(['jquery']);
+  });
 });
 
 describe('ast.modify', function() {
