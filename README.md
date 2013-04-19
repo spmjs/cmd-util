@@ -1,4 +1,4 @@
-# cmd-util [![Build Status](https://travis-ci.org/spmjs/cmd-util.png)](https://travis-ci.org/spmjs/cmd-util)
+# cmd-util
 
 Utilities for common module definition.
 
@@ -6,7 +6,8 @@ Utilities for common module definition.
 
 This package is designed for developers, if you are a user, don't read this.
 
-**100% test coverage**
+[![Build Status](https://travis-ci.org/spmjs/cmd-util.png?branch=master)](https://travis-ci.org/spmjs/cmd-util)
+[![Coverage Status](https://coveralls.io/repos/spmjs/cmd-util/badge.png?branch=master)](https://coveralls.io/r/spmjs/cmd-util)
 
 ## Implements
 
