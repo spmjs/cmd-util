@@ -23,14 +23,12 @@ coverage:
 	@echo "Built Report to ${out}"
 	@echo
 
+coveralls:
+	@node_modules/.bin/jscoverage lib lib-cov
+	@CMD_COVERAGE=1 $(MAKE) test reporter=mocha-lcov-reporter | node_modules/.bin/coveralls
+	@rm -rf lib-cov
+
 clean:
 	@rm -fr _site
-
-theme = ~/.spm/themes/one
-documentation:
-	@nico build --theme ${theme} -C scripts/nico.json
-
-server:
-	@nico server --theme ${theme} -C scripts/nico.json
 
 .PHONY: all build test lint coverage
