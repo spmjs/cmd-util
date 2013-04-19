@@ -22,17 +22,15 @@ This package is designed for developers, if you are a user, don't read this.
 $ npm install cmd-util
 ```
 
-Get the unstable version with:
-
-```
-$ npm install cmd-util@ninja
-```
-
 ## Contribute
 
 Yes, please do contribute. But before this, you should read our [Contributing Guide](https://github.com/spmjs/cmd-util/blob/master/CONTRIBUTING.md).
 
 ## Changelog
+
+**April 19th, 2013** `0.3.6`
+
+1. Support parse dependency of `define('id', null, factory)` #2
 
 **April 8th, 2013** `0.3.5`
 
