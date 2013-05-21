@@ -28,6 +28,10 @@ Yes, please do contribute. But before this, you should read our [Contributing Gu
 
 ## Changelog
 
+**May 21st, 2013** `0.3.7`
+
+1. Family can has - in its name.
+
 **April 19th, 2013** `0.3.6`
 
 1. Support parse dependency of `define('id', null, factory)` #2
