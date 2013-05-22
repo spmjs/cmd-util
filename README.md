@@ -28,6 +28,11 @@ Yes, please do contribute. But before this, you should read our [Contributing Gu
 
 ## Changelog
 
+
+**May 22nd, 2013** `0.3.8`
+
+1. Little fix [#4](https://github.com/spmjs/cmd-util/issues/4)
+
 **May 21st, 2013** `0.3.7`
 
 1. Family can has - in its name.
