@@ -2,7 +2,7 @@
   "name": "cmd-util",
   "version": "0.3.8",
   "description": "Utilities for common module definition.",
-  "author": "Hsiaoming Yang <lepture@me.com>",
+  "author": "Hsiaoming Yang <me@lepture.com>",
   "dependencies": {
     "uglify-js": "~2.2.5"
   },
