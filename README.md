@@ -28,6 +28,9 @@ Yes, please do contribute. But before this, you should read our [Contributing Gu
 
 ## Changelog
 
+**Jun 9th, 2013** `0.3.9`
+
+1. Update uglify js dependency.
 
 **May 22nd, 2013** `0.3.8`
 
