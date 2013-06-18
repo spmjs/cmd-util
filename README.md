@@ -28,6 +28,10 @@ Yes, please do contribute. But before this, you should read our [Contributing Gu
 
 ## Changelog
 
+**June 18th, 2013** `0.3.10`
+
+1. Passing parent node to filter for css.stringify
+
 **Jun 9th, 2013** `0.3.9`
 
 1. Update uglify js dependency.
