@@ -1,0 +1,15 @@
+[
+  {
+    "type": "block",
+    "code": [
+      {
+        "type": "string",
+        "code": "body {color: red}"
+      },
+      {
+        "type": "string",
+        "code": "a {color: black}"
+      }
+    ]
+  }
+]
