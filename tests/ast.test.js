@@ -11,7 +11,7 @@ describe('ast.parse', function() {
     ].join('\n');
     var parsed = ast.parseFirst(code);
     parsed.id.should.equal('id');
-    parsed.dependencies.should.have.length(0);
+    parsed.dependencies.should.have.length(2);
   });
 
   it('find ./a as dependency', function() {
