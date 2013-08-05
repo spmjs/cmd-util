@@ -280,11 +280,14 @@ describe('ast.modify', function() {
       "  require.async('jquery');",
       "});"
     ].join('\n');
-    code = ast.modify(code, {async: function(value) {
+    var data = ast.modify(code, {async: function(value) {
       if (value === 'jquery') {
         return '$';
       }
-    }});
-    code.print_to_string().should.include('require.async("$")');
+    }}).print_to_string();
+    data.should.include('require.async("$")');
+
+    data = ast.modify(code, {async: {'jquery': '$'}}).print_to_string();
+    data.should.include('require.async("$")');
   });
 });
