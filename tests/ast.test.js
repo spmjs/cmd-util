@@ -273,4 +273,18 @@ describe('ast.modify', function() {
     code.should.include('(function()');
     code.should.include('jquery-debug');
   });
+
+  it('can modify async', function() {
+    var code = [
+      "define(function(require, exports, module) {",
+      "  require.async('jquery');",
+      "});"
+    ].join('\n');
+    code = ast.modify(code, {async: function(value) {
+      if (value === 'jquery') {
+        return '$';
+      }
+    }});
+    code.print_to_string().should.include('require.async("$")');
+  });
 });
