@@ -61,7 +61,7 @@ The result of `ast.parse(code)`:
 ]
 ```
 
-## ast.modify(code, {id: fn, dependencies: fn, require: fn})
+## ast.modify(code, {id: fn, dependencies: fn, require: fn, async: fn})
 
 Modify meta data in the `define`, it returns ast, get the string with:
 
@@ -100,6 +100,22 @@ ast.modify(code, {require: function(v) {
 ast.modify(code, {require: {'jquery': '$'}});
 
 // => define('id', [], function(require) { var $ = require('$') })
+```
+
+```js
+// define('id', [], function(require) { require.async('jquery') })
+ast.modify(code, {async: function(v) {
+    if (v === 'jquery') {
+        return '$';
+    }
+});
+// => define('id', [], function(require) { require.async('$') })
+```
+
+```js
+// define('id', [], function(require) { require.async('jquery') })
+ast.modify(code, {async: {'jquery': '$'}});
+// => define('id', [], function(require) { require.async('$') })
 ```
 
 You can delete a dependencies by `return null`.
