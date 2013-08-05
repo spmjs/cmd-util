@@ -28,6 +28,10 @@ Yes, please do contribute. But before this, you should read our [Contributing Gu
 
 ## Changelog
 
+**August 5th, 2013** `0.3.12`
+
+1. Can modify `require.async`
+
 **July 23rd, 2013** `0.3.11`
 
 1. Parsing dependencies for `define(id, factory)`

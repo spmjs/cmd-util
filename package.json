@@ -1,6 +1,6 @@
 {
   "name": "cmd-util",
-  "version": "0.3.11",
+  "version": "0.3.12",
   "description": "Utilities for common module definition.",
   "author": "Hsiaoming Yang <me@lepture.com>",
   "dependencies": {
