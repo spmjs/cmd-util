@@ -279,6 +279,7 @@ describe('ast.modify', function() {
       "define(function(require, exports, module) {",
       "  require.async('jquery');",
       "  require.async('foo', function(foo){});",
+      "  require.async(['jquery', 'foo']);",
       "  require.async(['jquery', 'foo'], function($, foo){});",
       "});"
     ].join('\n');
@@ -292,11 +293,13 @@ describe('ast.modify', function() {
     }}).print_to_string();
     data.should.include('require.async("$")');
     data.should.include('require.async("app/foo",function(foo){})');
+    data.should.include('require.async(["$","app/foo"]');
     data.should.include('require.async(["$","app/foo"],function($,foo){})');
 
     data = ast.modify(code, {async: {'jquery': '$', 'foo': 'app/foo'}}).print_to_string();
     data.should.include('require.async("$")');
     data.should.include('require.async("app/foo",function(foo){})');
+    data.should.include('require.async(["$","app/foo"]');
     data.should.include('require.async(["$","app/foo"],function($,foo){})');
   });
 });
