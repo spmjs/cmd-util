@@ -296,7 +296,9 @@ describe('ast.modify', function() {
     data.should.include('require.async(["$","app/foo"]');
     data.should.include('require.async(["$","app/foo"],function($,foo){})');
 
-    data = ast.modify(code, {async: {'jquery': '$', 'foo': 'app/foo'}}).print_to_string();
+    data = ast.modify(code, {
+      async: {'jquery': '$', 'foo': 'app/foo'}
+    }).print_to_string();
     data.should.include('require.async("$")');
     data.should.include('require.async("app/foo",function(foo){})');
     data.should.include('require.async(["$","app/foo"]');
