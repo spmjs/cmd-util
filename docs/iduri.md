@@ -27,7 +27,7 @@ Supported formats:
 - family/name@version
 - family/name#version
 - family.name@version
-- family/name#version
+- family.name#version
 
 ```js
 // iduri.resovle('seajs')
