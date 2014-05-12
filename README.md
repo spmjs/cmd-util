@@ -28,6 +28,10 @@ Yes, please do contribute. But before this, you should read our [Contributing Gu
 
 ## Changelog
 
+**August 12th, 2013** `0.3.13`
+
+1. @import without quote
+
 **August 5th, 2013** `0.3.12`
 
 1. Can modify `require.async`
